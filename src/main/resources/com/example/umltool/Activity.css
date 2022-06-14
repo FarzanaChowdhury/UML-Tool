@@ -1,0 +1,35 @@
+.startCircle{
+    -fx-shape: "M 350 250 A 50 50 0 1 1 450 250 A 50 50 0 1 1 350 250 ";
+    -fx-background-color: black;
+    -fx-border: 12px solid;
+    -fx-border-color: black;
+    -fx-background-radius: 15.0;
+}
+.action{
+
+    -fx-shape: " M 240 260 Q 200 280 240 300 L 420 300 Q 460 280 420 260 Z";
+    -fx-background-color: white;
+    -fx-border: 12px solid;
+    -fx-border-color: black;
+    -fx-background-radius: 15.0;
+}
+.Decision{
+
+    -fx-shape: " M 400 100 L 300 200 L 400 300 L 500 200 Z ";
+    -fx-background-color: white;
+    -fx-border: 12px solid;
+    -fx-border-color: black;
+    -fx-background-radius: 15.0;
+}
+.arrow{
+    -fx-shape: "M 400 150 L 550 250 L 400 350 Z ";
+    -fx-background-color: black;
+    -fx-border: 12px solid;
+    -fx-border-color: black;
+    -fx-background-radius: 15.0;
+}
+
+.fork{
+-fx-background-color: black;
+    -fx-border: 3px solid;
+}

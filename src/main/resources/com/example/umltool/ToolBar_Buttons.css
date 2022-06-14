@@ -1,0 +1,9 @@
+.button {
+-fx-background-color: none;
+-fx-transition-duration: 1s;
+-fx-cursor: grab;
+}
+.button:hover {-fx-background-color: #9bc6d9;
+-fx-text-fill: white;
+-fx-cursor: hand;
+ }

@@ -1,0 +1,40 @@
+
+.startEnd{
+
+    -fx-shape: " M 240 260 Q 200 280 240 300 L 420 300 Q 460 280 420 260 Z";
+    -fx-background-color: white;
+    -fx-border: 12px solid;
+    -fx-border-color: black;
+    -fx-background-radius: 15.0;
+}
+.process{
+    -fx-shape: "M 250 250 L 600 250 L 600 350 L 250 350 Z";
+    -fx-background-color: white;
+    -fx-border: 12px solid;
+    -fx-border-color: black;
+    -fx-background-radius: 15.0;
+}
+
+.io{
+    -fx-shape: "M 250 250 L 600 250 L 550 400 L 200 400 Z";
+    -fx-background-color: white;
+    -fx-border: 12px solid;
+    -fx-border-color: black;
+    -fx-background-radius: 15.0;
+}
+
+.Decision{
+
+    -fx-shape: " M 400 100 L 300 200 L 400 300 L 500 200 Z ";
+    -fx-background-color: white;
+    -fx-border: 12px solid;
+    -fx-border-color: black;
+    -fx-background-radius: 15.0;
+}
+.arrow{
+    -fx-shape: "M 400 150 L 550 250 L 400 350 Z ";
+    -fx-background-color: black;
+    -fx-border: 12px solid;
+    -fx-border-color: black;
+    -fx-background-radius: 15.0;
+}

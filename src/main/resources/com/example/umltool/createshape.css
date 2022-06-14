@@ -1,0 +1,52 @@
+
+
+.mainFxmlClass {
+
+}
+.button{
+    -fx-font-size: 16pt;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, black,10,0,0,0);
+    
+}
+.first-button{
+   
+    -fx-shape: " M 400 100 L 300 200 L 400 300 L 500 200 Z ";
+    -fx-background-color: white;
+    -fx-border: 12px solid; 
+    -fx-border-color: black; 
+    -fx-background-radius: 15.0;
+}
+.second-button{
+   
+    -fx-shape: "M 150 150 L 150 250 L 350 250 L 350 150 M 150 150 L 150 100 L 350 100 L 350 150 Z ";
+    -fx-background-color: white;
+    -fx-border: 12px solid; 
+    -fx-border-color: black; 
+    -fx-background-radius: 15.0;
+  
+}
+.third-button{
+   
+    -fx-shape: " M 240 260 Q 200 280 240 300 L 420 300 Q 460 280 420 260 Z";
+    -fx-background-color: white;
+    -fx-border: 12px solid; 
+    -fx-border-color: black; 
+    -fx-background-radius: 15.0;
+}
+.forth-button{
+   
+    -fx-shape: " M 240 260 A 50 50 0 1 1 240 280 Z";
+    -fx-background-color: white;
+    -fx-border: 12px solid; 
+    -fx-border-color: black; 
+    -fx-background-radius: 15.0;
+}
+
+.circle{
+    -fx-background-radius: 150;
+    -fx-pref-width: 300;
+    -fx-pref-height: 300;
+    -fx-background-color: white; 
+   
+}

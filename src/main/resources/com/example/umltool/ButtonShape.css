@@ -1,0 +1,60 @@
+.second-button{
+
+    -fx-shape: "M 150 150 L 150 250 L 350 250 L 350 150 M 150 150 L 150 100 L 350 100 L 350 150 Z ";
+    -fx-background-color: white;
+    -fx-border: 12px solid;
+    -fx-border-color: black;
+    -fx-background-radius: 15.0;
+
+}
+.anchor {
+    -fx-shape: "M 220 250 L 240 250 L 240 270 L 220 270 Z";
+    -fx-background-color: transparent;
+    -fx-background-radius: 5.0;
+}
+
+.anchor:hover {
+  -fx-background-color: white;
+  -fx-border: 20px solid;
+  -fx-border-color: #4094c9;
+}
+
+.text-field {
+     -fx-background-color: transparent;
+ }
+
+ .text-area {
+      -fx-background-color: transparent;
+  }
+
+.aggregation{
+    -fx-shape: "M 360 300 L 300 320 L 240 300 L 300 280 Z";
+    -fx-background-color: white;
+    -fx-border: 12px solid;
+    -fx-border-color: black;
+    -fx-background-radius: 15.0;
+}
+
+.composition{
+    -fx-shape: "M 360 300 L 300 320 L 240 300 L 300 280 Z";
+    -fx-background-color: black;
+    -fx-border: 12px solid;
+    -fx-border-color: black;
+    -fx-background-radius: 15.0;
+}
+
+.inheritance{
+    -fx-shape: "M 360 300 L 300 320 L 300 280 Z";
+    -fx-background-color: white;
+    -fx-border: 12px solid;
+    -fx-border-color: black;
+    -fx-background-radius: 15.0;
+}
+
+.association{
+    -fx-shape: "M 380 300 L 440 320 L 380 340 ";
+    -fx-background-color: white;
+    -fx-border: 12px solid;
+    -fx-border-color: black;
+    -fx-background-radius: 15.0;
+}

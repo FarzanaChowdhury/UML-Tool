@@ -1,0 +1,44 @@
+.pane {
+    -fx-background-color: #1f5b73,
+        linear-gradient(from 0.5px 0.0px to 10.5px  0.0px, repeat, black 5%, transparent 5%),
+        linear-gradient(from 0.0px 0.5px to  0.0px 10.5px, repeat, black 5%, transparent 5%);
+
+}
+
+.menu:hover,
+.menu:showing,
+.menu: focused
+{
+    -fx-background-color: #1f5b73;
+     transition-duration: 0.4s;
+}
+.menu .label
+{
+    -fx-text-fill: #f0f6f9;
+}
+.menu-item
+{
+
+    -fx-background-color: #f0f6f9;
+}
+
+.menu-item:focused {
+    -fx-background-color: #1f5b73;
+
+}
+.menu-item .label
+
+{
+    -fx-text-fill: #1f5b73;
+}
+.menu-item:focused .label,.menu-item:hovered .label
+{
+    -fx-text-fill: #f0f6f9;
+}
+
+
+
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
