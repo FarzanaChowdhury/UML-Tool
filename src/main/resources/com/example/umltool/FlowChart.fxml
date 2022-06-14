@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox fx:id="B" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.umltool.FlowChartController">
+   <children>
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" HBox.hgrow="ALWAYS">
+         <center>
+            <ScrollPane pannable="true" prefHeight="200.0" prefWidth="200.0" style="-fx-focus-color: #D9E7EB;" BorderPane.alignment="CENTER">
+               <content>
+                  <AnchorPane fx:id="p" prefHeight="526.0" prefWidth="761.0">
+                     <children>
+                        <Canvas height="2000.0" width="2000.0" />
+                     </children>
+                  </AnchorPane>
+               </content>
+               <stylesheets>
+                  <URL value="@ButtonShape.css" />
+                  <URL value="@FlowchartShape.css" />
+               </stylesheets></ScrollPane>
+         </center>
+         <top>
+            <VBox prefHeight="90.0" prefWidth="599.0" BorderPane.alignment="CENTER">
+               <children>
+                  <MenuBar fx:id="menubar" nodeOrientation="LEFT_TO_RIGHT" prefWidth="657.0" style="-fx-background-color: #3a88a9;" stylesheets="@UML.css" VBox.vgrow="ALWAYS">
+                    <menus>
+                      <Menu mnemonicParsing="false" text="File">
+                        <items>
+                              <MenuItem mnemonicParsing="false" text="New" />
+                          <MenuItem mnemonicParsing="false" text="Open" />
+                              <MenuItem mnemonicParsing="false" onAction="#Save" text="Save" />
+                              <MenuItem mnemonicParsing="false" onAction="#Exit" text="Exit" />
+                        </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Edit">
+                        <items>
+                              <MenuItem mnemonicParsing="false" text="Undo" />
+                              <MenuItem mnemonicParsing="false" text="Redo" />
+                          <MenuItem mnemonicParsing="false" text="Select" />
+                              <MenuItem mnemonicParsing="false" onAction="#bgColor" text="Change Background Color" />
+                              <MenuItem mnemonicParsing="false" onAction="#Default" text="Default Bakground Color" />
+                        </items>
+                      </Menu>
+                        <Menu mnemonicParsing="false" text="View">
+                          <items>
+                              <MenuItem mnemonicParsing="false" text="Zoom In" />
+                              <MenuItem mnemonicParsing="false" text="Zoom Out" />
+                            <MenuItem mnemonicParsing="false" text="Reset Zoom" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Insert">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Image" />
+                          </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                          <items>
+                              <MenuItem mnemonicParsing="false" text="User Guide" />
+                              <MenuItem mnemonicParsing="false" text="FAQs" />
+                            <MenuItem mnemonicParsing="false" text="About" />
+                          </items>
+                        </Menu>
+                    </menus>
+                     <VBox.margin>
+                        <Insets left="-7.0" />
+                     </VBox.margin>
+                  </MenuBar>
+                  <ToolBar prefHeight="69.0" prefWidth="599.0" style="-fx-background-color: #D9E9EB;" VBox.vgrow="ALWAYS">
+                    <items>
+                      <Button contentDisplay="TOP" graphicTextGap="1.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="46.0" prefWidth="49.0" style="-fx-background-color: transparent;" stylesheets="@ToolBar_Buttons.css" text="Paste" textAlignment="CENTER">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/Paste.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                           <font>
+                              <Font name="Bookman Old Style" size="10.0" />
+                           </font>
+                        </Button>
+                        <Button contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="46.0" prefWidth="49.0" style="-fx-background-color: transparent;" stylesheets="@ToolBar_Buttons.css" text="Copy" textAlignment="RIGHT">
+                           <graphic>
+                              <ImageView fitHeight="21.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/Copy.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="Bookman Old Style" size="10.0" />
+                           </font>
+                        </Button>
+                        <Button contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="46.0" prefWidth="49.0" style="-fx-background-color: transparent;" stylesheets="@ToolBar_Buttons.css" text="Cut">
+                           <graphic>
+                              <ImageView fitHeight="22.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Images/Cut.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                        </Button>
+                        <VBox prefHeight="34.0" prefWidth="308.0">
+                           <children>
+                              <HBox prefHeight="66.0" prefWidth="257.0">
+                                 <children>
+                                    <MenuButton mnemonicParsing="false" text="Font">
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                                      </items>
+                                    </MenuButton>
+                                    <MenuButton mnemonicParsing="false" text="Size">
+                                      <items>
+                                        <MenuItem mnemonicParsing="false" text="Action 1" />
+                                        <MenuItem mnemonicParsing="false" text="Action 2" />
+                                      </items>
+                                    </MenuButton>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="58.0" prefWidth="308.0">
+                                 <children>
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#Undo" prefHeight="24.0" prefWidth="25.0" style="-fx-background-color: transparent;" stylesheets="@ToolBar_Buttons.css">
+                                       <graphic>
+                                          <ImageView fitHeight="27.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Images/Undo.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets bottom="1.0" top="1.0" />
+                                       </HBox.margin>
+                                       <padding>
+                                          <Insets left="0.1" />
+                                       </padding>
+                                    </Button>
+                                    <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#Redo" prefHeight="24.0" prefWidth="25.0" style="-fx-background-color: transparent;" stylesheets="@ToolBar_Buttons.css" textAlignment="RIGHT">
+                                       <graphic>
+                                          <ImageView fitHeight="27.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Images/Redo.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <padding>
+                                          <Insets left="1.0" />
+                                       </padding>
+                                       <HBox.margin>
+                                          <Insets bottom="1.0" top="1.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#Bold" prefHeight="27.0" prefWidth="23.0" style="-fx-background-color: transparent;" stylesheets="@ToolBar_Buttons.css">
+                                       <graphic>
+                                          <ImageView fitHeight="27.0" fitWidth="20.0" onMouseMoved="#ButtonHovered" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Images/Bold.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets left="3.0" right="3.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#Italic" prefHeight="27.0" prefWidth="23.0" style="-fx-background-color: transparent;" stylesheets="@ToolBar_Buttons.css">
+                                       <graphic>
+                                          <ImageView fitHeight="27.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Images/Italic.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets left="3.0" right="3.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="23.0" style="-fx-background-color: transparent;" stylesheets="@ToolBar_Buttons.css">
+                                       <graphic>
+                                          <ImageView fitHeight="27.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Images/Underline.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets left="3.0" right="3.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="23.0" style="-fx-background-color: transparent;" stylesheets="@ToolBar_Buttons.css">
+                                       <graphic>
+                                          <ImageView fitHeight="27.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Images/A.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets left="3.0" right="3.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="23.0" style="-fx-background-color: transparent;" stylesheets="@ToolBar_Buttons.css">
+                                       <graphic>
+                                          <ImageView fitHeight="27.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Images/Align%20Left.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets left="3.0" right="3.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="23.0" style="-fx-background-color: transparent;" stylesheets="@ToolBar_Buttons.css">
+                                       <graphic>
+                                          <ImageView fitHeight="27.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Images/Text1.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets left="3.0" right="3.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="23.0" style="-fx-background-color: transparent;" stylesheets="@ToolBar_Buttons.css">
+                                       <graphic>
+                                          <ImageView fitHeight="27.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Images/Fill%20color%204.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets left="3.0" right="3.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="23.0" style="-fx-background-color: transparent;" stylesheets="@ToolBar_Buttons.css">
+                                       <graphic>
+                                          <ImageView fitHeight="27.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Images/Color%20Dropper.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets left="3.0" right="3.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="23.0" style="-fx-background-color: transparent;" stylesheets="@ToolBar_Buttons.css">
+                                       <graphic>
+                                          <ImageView fitHeight="27.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Images/icons8-water-26.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                       <HBox.margin>
+                                          <Insets left="3.0" right="3.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                    </items>
+                  </ToolBar>
+               </children>
+            </VBox>
+         </top>
+         <left>
+            <VBox prefHeight="486.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="flowLb" alignment="CENTER" prefHeight="59.0" prefWidth="160.0" style="-fx-background-color: #9bc6d9;" text="Flow Chart" textAlignment="CENTER" textOverrun="CLIP">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                  </Label>
+                  <ScrollPane prefHeight="253.0" prefWidth="160.0" VBox.vgrow="ALWAYS">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="341.0" prefWidth="160.0">
+                           <children>
+                              <AnchorPane layoutX="-1.0" layoutY="2.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onMouseClicked="#addStEnd" prefHeight="67.0" prefWidth="160.0" stylesheets="@SideBar_Buttons.css" text="     Start/End">
+                                       <graphic>
+                                          <ImageView fitHeight="59.0" fitWidth="72.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Images/Flowchart%20Symbols/Start-End.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                 </children></AnchorPane>
+                              <Button layoutY="70.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="160.0" stylesheets="@SideBar_Buttons.css" text="        Arrow">
+                                 <graphic>
+                                    <ImageView fitHeight="33.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Images/Flowchart%20Symbols/Arrow.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutY="138.0" mnemonicParsing="false" onMouseClicked="#addDecision" prefHeight="67.0" prefWidth="160.0" text="      Decision">
+                                 <graphic>
+                                    <ImageView fitHeight="46.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Images/Flowchart%20Symbols/decision@4x.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <stylesheets>
+                                    <URL value="@SideBar_Buttons.css" />
+                                    <URL value="@FlowchartShape.css" />
+                                 </stylesheets>
+                              </Button>
+                              <Button layoutY="205.0" mnemonicParsing="false" onMouseClicked="#addProcess" prefHeight="67.0" prefWidth="160.0" stylesheets="@SideBar_Buttons.css" text="       Process">
+                                 <graphic>
+                                    <ImageView fitHeight="29.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Images/Flowchart%20Symbols/Process.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <Button layoutX="-1.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#addIO" prefHeight="67.0" prefWidth="160.0" stylesheets="@SideBar_Buttons.css" text="Input/Output">
+                                 <graphic>
+                                    <ImageView fitHeight="40.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Images/Flowchart%20Symbols/input-output@4x.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </children>
+            </VBox>
+         </left>
+      </BorderPane>
+   </children>
+</HBox>

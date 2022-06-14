@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="Base" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.umltool.UMLView">
+   <children>
+      <Button layoutX="167.0" layoutY="39.0" mnemonicParsing="false" onMouseClicked="#ClassDiagram" prefHeight="76.0" prefWidth="196.0" text="Class Diagram" />
+      <Button layoutX="167.0" layoutY="134.0" mnemonicParsing="false" onMouseClicked="#ActivityDiagram" prefHeight="76.0" prefWidth="196.0" text="Activity Diagram" />
+      <Button layoutX="167.0" layoutY="224.0" mnemonicParsing="false" onMouseClicked="#FlowChart" prefHeight="76.0" prefWidth="196.0" text="Flow Chart" />
+      <Button layoutX="167.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#Exit" prefHeight="76.0" prefWidth="196.0" text="Exit" />
+   </children>
+</AnchorPane>
