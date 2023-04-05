@@ -1,15 +1,18 @@
-package com.example.umltool;
+package com.example.uml_tool;
 
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -17,13 +20,11 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.Shape;
 import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Translate;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
 
-public class FlowChartController {
+public class ClassDiagram {
     private int shapeCount = 0, flag = 0;
     boolean selected = false;
     private Shape shapeBeingDragged = null;
@@ -35,9 +36,6 @@ public class FlowChartController {
     double orgTranslateX, orgTranslateY;
     double startX,startY,endX,endY;
     TranslateTransition transition = new TranslateTransition();
-
-    TextField text;
-    TextArea text2;
     @FXML
     private HBox B;
     @FXML
@@ -50,12 +48,6 @@ public class FlowChartController {
     private Button bt;
     Node node1,node2;
     //  TextField text;
-
-    public void ButtonHovered(MouseEvent e) {
-        System.out.println("Hovered");
-        //     setBackground(new Background(new BackgroundFill(Color.RED, null, null)));
-
-    }
 
     public void ButtonHover(MouseEvent e) {
         System.out.println("Hover");
@@ -79,7 +71,7 @@ public class FlowChartController {
         System.out.println("Redo");
     }
 
-    public void Exit(ActionEvent e) throws IOException {
+   /* public void Exit(ActionEvent e) throws IOException {
         try {
             Stage pstage = (Stage) B.getScene().getWindow();
             pstage.close();
@@ -87,18 +79,31 @@ public class FlowChartController {
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setScene(scene);
-            stage.show();
-        } catch (Exception er) {
+            stage.show();}
+        catch(Exception er) {
+            System.out.println("Error found");
+        }
+    }*/
+
+
+
+    public void ExitClass(ActionEvent e) throws IOException {
+        try {
+            Stage pstage = (Stage) B.getScene().getWindow();
+            pstage.close();
+            Parent root = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.show();}
+        catch(Exception er) {
             System.out.println("Error found");
         }
     }
-//Don't need to change anything above it
-
-
-    public void addStEnd() {
-        bt = new Button();
-        bt.getStyleClass().add("startEnd");
-        bt.setPrefSize(150, 80);
+    public void addButton(Button btn) {
+        bt = btn;
+        bt.getStyleClass().add("second-button");
+        bt.setMinSize(100, 100);
         p.getChildren().add(bt);
         bt.setOnMousePressed(mouseHandler);
         bt.setOnMouseDragged(mouseHandler);
@@ -119,104 +124,9 @@ public class FlowChartController {
 
     }
 
-    public void addProcess() {
-        bt = new Button();
-        bt.getStyleClass().add("process");
-        bt.setMinSize(150, 80);
-        p.getChildren().add(bt);
-        bt.setOnMousePressed(mouseHandler);
-        bt.setOnMouseDragged(mouseHandler);
-        Make_TextField();
-        Anchor();
-
-              /*  bt.setOnScroll(e ->  {
-                        bt.getChildren().addAll(new EditableDraggableText(e.getX(), e.getY()));*/
-        bt.setOnMouseClicked(event ->
-        {
-            switch (event.getClickCount()) {
-                case 2:
-                    System.out.println("Two click");
-                    //  Create_Line(event);
-                    break;
-            }
-        });
-
-    }
-
-    public void addIO() {
-        bt = new Button();
-        bt.getStyleClass().add("io");
-        bt.setMinSize(150, 80);
-        p.getChildren().add(bt);
-        bt.setOnMousePressed(mouseHandler);
-        bt.setOnMouseDragged(mouseHandler);
-        Make_TextField();
-        Anchor();
-
-              /*  bt.setOnScroll(e ->  {
-                        bt.getChildren().addAll(new EditableDraggableText(e.getX(), e.getY()));*/
-        bt.setOnMouseClicked(event ->
-        {
-            switch (event.getClickCount()) {
-                case 2:
-                    System.out.println("Two click");
-                    //  Create_Line(event);
-                    break;
-            }
-        });
-
-    }
-
-    public void addDecision() {
-        bt = new Button();
-        bt.getStyleClass().add("Decision");
-        bt.setMinSize(145, 80);
-        p.getChildren().add(bt);
-        bt.setOnMousePressed(mouseHandler);
-        bt.setOnMouseDragged(mouseHandler);
-
-        Make_TextField();
-        Anchor();
-
-              /*  bt.setOnScroll(e ->  {
-                        bt.getChildren().addAll(new EditableDraggableText(e.getX(), e.getY()));*/
-        bt.setOnMouseClicked(event ->
-        {
-            switch (event.getClickCount()) {
-                case 2:
-                    System.out.println("Two click");
-                    //  Create_Line(event);
-                    break;
-            }
-        });
-
-    }
-    @FXML
-    Label flowLb;
-    @FXML
-    MenuBar menubar;
-    public void bgColor()
-    {
-        ColorPicker colorPicker = new ColorPicker();
-        p.getChildren().add(colorPicker);
-        colorPicker.valueProperty().addListener((observable -> {
-            p.setStyle(
-                    "-fx-background-color: #" + colorPicker.getValue().toString().substring(2, 8) + ";"
-            );
-            flowLb.setStyle(
-                    "-fx-background-color: #" + colorPicker.getValue().toString().substring(2, 8) + ";"
-            );
-            menubar.setStyle(
-                    "-fx-background-color: #" + colorPicker.getValue().toString().substring(2, 8) + ";"
-            );
-        }));
-    }
-    public void Default()
-    {
-        p.setStyle("-fx-background-color: #f4f4f4");
-        menubar.setStyle("-fx-background-color: #3a88a9");
-        flowLb.setStyle("-fx-background-color: #9bc6d9");
-
+    public void make_Button(MouseEvent e) {
+        addButton(new Button());
+        Button btn = new Button();
     }
 
     EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent>() {
@@ -256,14 +166,25 @@ public class FlowChartController {
 
     public void Make_TextField()
     {
-        text = new TextField();
+        TextField text = new TextField();
         text.setMaxSize(90,200);
         text.getStyleClass().add("text-field");
-        text.translateXProperty().bind(bt.translateXProperty().add(35));
-        text.translateYProperty().bind(bt.translateYProperty().add(30));
+        text.translateXProperty().bind(bt.translateXProperty());
+        text.translateYProperty().bind(bt.translateYProperty());
 
 
+        TextArea text2 = new TextArea();
+        text2.setMaxSize(90,62);
+        text2.getStyleClass().add("text-area");
+        //     text2.translateXProperty().bind(bt.widthProperty());
+        //    text2.translateYProperty().bind(bt.heightProperty().divide(2));
 
+        text2.setPadding(new Insets(0,0,0,0));
+        text2.translateXProperty().bind(bt.translateXProperty());
+        text2.translateYProperty().bind(bt.translateYProperty().add(35));
+
+
+        p.getChildren().add(text2);
         p.getChildren().add(text);
 
 
@@ -277,25 +198,17 @@ public class FlowChartController {
         Button b3 = new Button();
         Button b4 = new Button();
 
-        b1.setMaxSize(20,20);
-        b2.setMaxSize(20,20);
-        b2.setMaxSize(20,20);
-        b4.setMaxSize(20,20);
-
 //side anchors
-        b1.translateXProperty().bind(bt.translateXProperty().subtract(5));
-        b1.translateYProperty().bind(bt.translateYProperty().add(28));
-        b2.translateXProperty().bind(bt.translateXProperty().add(125));
-        b2.translateYProperty().bind(bt.translateYProperty().add(28));
+        b1.translateXProperty().bind(bt.translateXProperty().subtract(7));
+        b1.translateYProperty().bind(bt.translateYProperty().add(50));
+        b2.translateXProperty().bind(bt.translateXProperty().add(95));
+        b2.translateYProperty().bind(bt.translateYProperty().add(50));
 
 //top and down anchors
-        b3.translateXProperty().bind(bt.translateXProperty().add(90));
-        b3.translateYProperty().bind(bt.translateYProperty().subtract(7));
-        b4.translateXProperty().bind(bt.translateXProperty().add(90));
-        b4.translateYProperty().bind(bt.translateYProperty().add(75));
-
-        b3.getTransforms().add(new Rotate(90));
-        b4.getTransforms().add(new Rotate(90));
+        b3.translateXProperty().bind(bt.translateXProperty().add(45));
+        b3.translateYProperty().bind(bt.translateYProperty().subtract(10));
+        b4.translateXProperty().bind(bt.translateXProperty().add(45));
+        b4.translateYProperty().bind(bt.translateYProperty().add(90));
 
         b1.getStyleClass().add("anchor");
         b2.getStyleClass().add("anchor");
@@ -317,26 +230,12 @@ public class FlowChartController {
         line = new Line(startX,startY,endX,endY);
 
 
-        line.startXProperty().bind(node1.translateXProperty().subtract(12));
-        line.startYProperty().bind(node1.translateYProperty().add(5));
-        line.endXProperty().bind(node2.translateXProperty().subtract(10));
-        line.endYProperty().bind(node2.translateYProperty().subtract(6));
+        line.startXProperty().bind(node1.translateXProperty().add(6));
+        line.startYProperty().bind(node1.translateYProperty().add(9));
+        line.endXProperty().bind(node2.translateXProperty().add(6));
+        line.endYProperty().bind(node2.translateYProperty().add(9));
 
         p.getChildren().add(line);
-
-        Button b = new Button();
-        b.setMaxSize(20,20);
-        b.getStyleClass().add("arrow");
-        if(!side) {
-            b.getTransforms().add(new Rotate(90));
-            b.translateXProperty().bind(node2.translateXProperty().add(2));
-            b.translateYProperty().bind(node2.translateYProperty().subtract(11));
-        }
-        else
-        {b.translateXProperty().bind(node2.translateXProperty().subtract(9));
-            b.translateYProperty().bind(node2.translateYProperty().subtract(7));}
-
-        p.getChildren().add(b);
     }
 
     EventHandler<MouseEvent> sideConnect = new EventHandler<MouseEvent>() {
@@ -370,15 +269,6 @@ public class FlowChartController {
         }
     };
 
-    public void Save(ActionEvent e)
-    {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Files", "*.jpg"));
-        Stage stage = (Stage) p.getScene().getWindow();
-        File file = fileChooser.showSaveDialog(stage);
-    }
-
     EventHandler<MouseEvent> topConnect = new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent e) {
@@ -409,4 +299,69 @@ public class FlowChartController {
 
         }
     };
+
+    public void Aggregation()
+    {
+        Button b = new Button();
+        b.getStyleClass().add("aggregation");
+        if(side) {
+            b.getTransforms().add(new Rotate(90));
+            b.translateXProperty().bind(line.endXProperty().add(6));
+            b.translateYProperty().bind(line.endYProperty().subtract(8));
+        }
+        else
+        {b.translateXProperty().bind(line.endXProperty().subtract(8));
+            b.translateYProperty().bind(line.endYProperty().subtract(24));}
+
+        p.getChildren().add(b);
+    }
+
+    public void Association()
+    {
+        Button b = new Button();
+        b.getStyleClass().add("association");
+        if(!side) {
+            b.getTransforms().add(new Rotate(90));
+            b.translateXProperty().bind(node2.translateXProperty().add(18));
+            b.translateYProperty().bind(node2.translateYProperty().subtract(3));
+        }
+        else
+        {b.translateXProperty().bind(node2.translateXProperty().subtract(9));
+            b.translateYProperty().bind(node2.translateYProperty().subtract(7));}
+
+        p.getChildren().add(b);
+    }
+    public void Composition()
+    {
+        Button b = new Button();
+        b.getStyleClass().add("composition");
+
+        if(side) {
+            b.getTransforms().add(new Rotate(90));
+            b.translateXProperty().bind(line.endXProperty().add(5));
+            b.translateYProperty().bind(line.endYProperty().subtract(8));
+        }
+        else
+        {b.translateXProperty().bind(line.endXProperty().subtract(8));
+            b.translateYProperty().bind(line.endYProperty().subtract(24));}
+
+        p.getChildren().add(b);
+    }
+    public void Inheritance()
+    {
+        Button b = new Button();
+        b.getStyleClass().add("inheritance");
+        if(!side) {
+            b.getTransforms().add(new Rotate(90));
+            b.translateXProperty().bind(node2.translateXProperty().add(18));
+            b.translateYProperty().bind(node2.translateYProperty().subtract(3));
+        }
+        else
+        {b.translateXProperty().bind(node2.translateXProperty().subtract(9));
+            b.translateYProperty().bind(node2.translateYProperty().subtract(7));}
+        p.getChildren().add(b);
+
+    }
+
 }
+

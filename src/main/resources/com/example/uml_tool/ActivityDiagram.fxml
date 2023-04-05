@@ -9,26 +9,22 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox fx:id="B" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.umltool.ClassDiagramController">
+<HBox fx:id="B" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.uml_tool.ActivityDiagramController">
    <children>
-      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@UML.css" HBox.hgrow="ALWAYS">
+      <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" HBox.hgrow="ALWAYS">
          <center>
-            <ScrollPane fx:id="scroll" pannable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <ScrollPane pannable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <content>
                   <AnchorPane fx:id="p" prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Canvas fx:id="canvas" height="2000.0" styleClass="pane" width="2000.0" />
+                        <Canvas height="2000.0" width="2000.0" />
                      </children>
                      <stylesheets>
+                        <URL value="@Activity.css" />
                         <URL value="@ButtonShape.css" />
-                        <URL value="@DarkMode.css" />
                      </stylesheets>
                   </AnchorPane>
-               </content>
-               <stylesheets>
-                  <URL value="@UML.css" />
-                  <URL value="@DarkMode.css" />
-               </stylesheets></ScrollPane>
+               </content></ScrollPane>
          </center>
          <top>
             <VBox prefHeight="90.0" prefWidth="599.0" BorderPane.alignment="CENTER">
@@ -40,7 +36,6 @@
                               <MenuItem mnemonicParsing="false" text="New" />
                           <MenuItem mnemonicParsing="false" text="Open" />
                               <MenuItem mnemonicParsing="false" onAction="#Save" text="Save" />
-                              <MenuItem mnemonicParsing="false" onAction="#GenerateCode" text="Generate Code" />
                               <MenuItem mnemonicParsing="false" onAction="#Exit" text="Exit" />
                         </items>
                       </Menu>
@@ -50,7 +45,7 @@
                               <MenuItem mnemonicParsing="false" text="Redo" />
                           <MenuItem mnemonicParsing="false" text="Select" />
                               <MenuItem mnemonicParsing="false" onAction="#bgColor" text="Change Background Color" />
-                              <MenuItem mnemonicParsing="false" onAction="#Default" text="Default Backgroud Color" />
+                              <MenuItem mnemonicParsing="false" onAction="#Default" text="Default Background Color" />
                         </items>
                       </Menu>
                         <Menu mnemonicParsing="false" text="View">
@@ -74,7 +69,7 @@
                         </Menu>
                     </menus>
                   </MenuBar>
-                  <ToolBar prefHeight="69.0" prefWidth="599.0" stylesheets="@UML.css" VBox.vgrow="ALWAYS">
+                  <ToolBar prefHeight="69.0" prefWidth="599.0" VBox.vgrow="ALWAYS">
                     <items>
                       <Button contentDisplay="TOP" graphicTextGap="1.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="46.0" prefWidth="49.0" stylesheets="@ToolBar_Buttons.css" text="Paste" textAlignment="CENTER">
                            <graphic>
@@ -243,7 +238,7 @@
                                           <Insets left="3.0" right="3.0" />
                                        </HBox.margin>
                                     </Button>
-                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#bgColor" prefHeight="27.0" prefWidth="23.0" stylesheets="@ToolBar_Buttons.css">
+                                    <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="23.0" stylesheets="@ToolBar_Buttons.css">
                                        <graphic>
                                           <ImageView fitHeight="27.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -257,7 +252,7 @@
                                     </Button>
                                     <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="27.0" prefWidth="23.0" stylesheets="@ToolBar_Buttons.css">
                                        <graphic>
-                                          <ImageView fitHeight="27.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fx:id="hide" fitHeight="27.0" fitWidth="20.0" onMouseClicked="#Hideclr" pickOnBounds="true" preserveRatio="true">
                                              <image>
                                                 <Image url="@Images/Color%20Dropper.png" />
                                              </image>
@@ -289,62 +284,99 @@
             </VBox>
          </top>
          <left>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="486.0" prefWidth="160.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="486.0" prefWidth="160.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="classLb" alignment="CENTER" prefHeight="59.0" prefWidth="160.0" style="-fx-background-color: #9bc6d9;" stylesheets="@SideBar_Buttons.css" text="Class Diagram" textAlignment="CENTER" textOverrun="CLIP">
+                  <Label fx:id="actLb" alignment="CENTER" prefHeight="59.0" prefWidth="160.0" style="-fx-background-color: #9bc6d9;" text="Activity Diagram" textAlignment="CENTER" textOverrun="CLIP">
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
                   </Label>
-                  <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="253.0" prefWidth="160.0" VBox.vgrow="ALWAYS">
+                  <ScrollPane maxWidth="1.7976931348623157E308" prefHeight="253.0" prefWidth="165.0" VBox.vgrow="ALWAYS">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="341.0" prefWidth="160.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="476.0" prefWidth="170.0">
                            <children>
-                              <AnchorPane layoutX="-1.0" layoutY="2.0">
+                              <AnchorPane layoutX="-1.0" layoutY="2.0" prefHeight="465.0" prefWidth="165.0">
                                  <children>
-                                    <Button fx:id="cls" layoutY="2.0" mnemonicParsing="false" onMousePressed="#make_Button" prefHeight="67.0" prefWidth="160.0" stylesheets="@SideBar_Buttons.css" text="     Class   ">
+                                    <Button layoutX="1.0" mnemonicParsing="false" onMouseClicked="#addAction" prefHeight="67.0" prefWidth="165.0" stylesheets="@SideBar_Buttons.css" text="    Action">
+                                       <padding>
+                                          <Insets left="3.0" right="3.0" />
+                                       </padding>
                                        <graphic>
-                                          <ImageView fitHeight="50.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="33.0" fitWidth="79.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@Images/Class%20Diagram%20Symbols/Class.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic></Button>
-                                    <Button fx:id="assc" layoutY="71.0" mnemonicParsing="false" onMouseClicked="#Association" prefHeight="67.0" prefWidth="160.0" stylesheets="@SideBar_Buttons.css" text="Association">
-                                       <graphic>
-                                          <ImageView fitHeight="23.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@Images/Class%20Diagram%20Symbols/Association.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                    </Button>
-                                    <Button fx:id="ag" layoutY="140.0" mnemonicParsing="false" onMouseClicked="#Aggregation" prefHeight="67.0" prefWidth="160.0" stylesheets="@SideBar_Buttons.css" text="Aggregation">
-                                       <graphic>
-                                          <ImageView fitHeight="18.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@Images/Class%20Diagram%20Symbols/Aggregation.png" />
+                                                <Image url="@Images/Activity%20Diagram%20Symbols/action@4x.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button fx:id="cm" layoutY="209.0" mnemonicParsing="false" onMouseClicked="#Composition" prefHeight="67.0" prefWidth="160.0" stylesheets="@SideBar_Buttons.css" text="Composition">
+                                    <Button layoutY="67.0" mnemonicParsing="false" onMouseClicked="#addDecision" prefHeight="67.0" prefWidth="165.0" stylesheets="@SideBar_Buttons.css" text="     Decision">
+                                       <padding>
+                                          <Insets left="3.0" right="3.0" />
+                                       </padding>
                                        <graphic>
-                                          <ImageView fitHeight="27.0" fitWidth="66.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="42.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@Images/Class%20Diagram%20Symbols/Composition.png" />
+                                                <Image url="@Images/Activity%20Diagram%20Symbols/decision@4x.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
                                     </Button>
-                                    <Button fx:id="in" layoutY="282.0" mnemonicParsing="false" onMouseClicked="#Inheritance" prefHeight="67.0" prefWidth="160.0" stylesheets="@SideBar_Buttons.css" text="Inheritance">
+                                    <Button layoutY="134.0" mnemonicParsing="false" onMouseClicked="#addFork" prefHeight="67.0" prefWidth="165.0" stylesheets="@SideBar_Buttons.css" text="        Fork">
+                                       <padding>
+                                          <Insets left="3.0" right="3.0" />
+                                       </padding>
                                        <graphic>
-                                          <ImageView fitHeight="19.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="42.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@Images/Class%20Diagram%20Symbols/Inheritance.png" />
+                                                <Image url="@Images/Activity%20Diagram%20Symbols/fork-join@4x.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button layoutY="201.0" mnemonicParsing="false" onMouseClicked="#addstart" prefHeight="67.0" prefWidth="165.0" stylesheets="@SideBar_Buttons.css" text="          Start">
+                                       <padding>
+                                          <Insets left="3.0" right="3.0" />
+                                       </padding>
+                                       <graphic>
+                                          <ImageView fitHeight="42.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Images/Activity%20Diagram%20Symbols/start@4x.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button layoutY="268.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="165.0" stylesheets="@SideBar_Buttons.css" text="            End">
+                                       <padding>
+                                          <Insets left="3.0" right="3.0" />
+                                       </padding>
+                                       <graphic>
+                                          <ImageView fitHeight="42.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Images/Activity%20Diagram%20Symbols/end@4x.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button layoutY="335.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="165.0" stylesheets="@SideBar_Buttons.css" text="MultiLane(Horizontal)">
+                                       <padding>
+                                          <Insets left="3.0" right="3.0" />
+                                       </padding>
+                                       <graphic>
+                                          <ImageView fitHeight="42.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Images/Activity%20Diagram%20Symbols/multilane-horizontal@4x.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button layoutX="-1.0" layoutY="405.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="165.0" stylesheets="@SideBar_Buttons.css" text="MultiLane(Vertical)">
+                                       <padding>
+                                          <Insets left="3.0" right="3.0" />
+                                       </padding>
+                                       <graphic>
+                                          <ImageView fitHeight="42.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Images/Activity%20Diagram%20Symbols/multilane-vertical@4x.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>

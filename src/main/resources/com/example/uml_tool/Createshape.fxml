@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="umltoollogin.CreateshapeController">
+    <stylesheets>
+        <URL value="@createshape.css" />
+    </stylesheets>
+   <children>
+      <Button layoutX="14.0" layoutY="22.0" mnemonicParsing="false" prefHeight="108.0" prefWidth="139.0" styleClass="second-button" text="Button" />
+      <Button layoutX="224.0" layoutY="38.0" mnemonicParsing="false" prefHeight="126.0" prefWidth="151.0" styleClass="first-button" text="Button" />
+      <Button layoutX="373.0" layoutY="52.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="199.0" styleClass="third-button" text="Button" />
+      <TextArea layoutX="20.0" layoutY="60.0" prefHeight="62.0" prefWidth="126.0" />
+      <TextField layoutX="32.0" layoutY="25.0" prefHeight="28.0" prefWidth="102.0" />
+      <TextArea layoutX="256.0" layoutY="74.0" prefHeight="54.0" prefWidth="86.0" />
+      <TextArea layoutX="397.0" layoutY="56.0" prefHeight="38.0" prefWidth="151.0" />
+   </children>
+</AnchorPane>

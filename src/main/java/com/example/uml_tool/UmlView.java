@@ -1,8 +1,10 @@
-package com.example.umltool;
+package com.example.uml_tool;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
@@ -11,8 +13,11 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class UMLView {
+//public class UmlView implements Initializable {
+public class UmlView {
 
 
     @FXML
@@ -50,8 +55,8 @@ public class UMLView {
             Goto("ClassDiagram");
         }
         catch(Exception er){
-            System.out.println("Failed to Open Diagram");
-        }
+        System.out.println("Failed to Open Diagram");
+    }
     }
     @FXML
     public void ActivityDiagram(MouseEvent e) throws IOException
@@ -76,5 +81,6 @@ public class UMLView {
     @FXML
     public void Exit(MouseEvent e)
     {Platform.exit();}
-}
+    }
+
 

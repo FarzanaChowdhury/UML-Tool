@@ -1,4 +1,4 @@
-package com.example.umltool;
+package com.example.uml_tool;
 
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
-public class ActivityDiagramController {
+public class FlowChartController {
     private int shapeCount = 0, flag = 0;
     boolean selected = false;
     private Shape shapeBeingDragged = null;
@@ -95,9 +95,9 @@ public class ActivityDiagramController {
 //Don't need to change anything above it
 
 
-    public void addAction() {
+    public void addStEnd() {
         bt = new Button();
-        bt.getStyleClass().add("action");
+        bt.getStyleClass().add("startEnd");
         bt.setPrefSize(150, 80);
         p.getChildren().add(bt);
         bt.setOnMousePressed(mouseHandler);
@@ -119,10 +119,10 @@ public class ActivityDiagramController {
 
     }
 
-    public void addstart() {
+    public void addProcess() {
         bt = new Button();
-        bt.getStyleClass().add("startCircle");
-        bt.setMinSize(100, 80);
+        bt.getStyleClass().add("process");
+        bt.setMinSize(150, 80);
         p.getChildren().add(bt);
         bt.setOnMousePressed(mouseHandler);
         bt.setOnMouseDragged(mouseHandler);
@@ -143,10 +143,10 @@ public class ActivityDiagramController {
 
     }
 
-    public void addFork() {
+    public void addIO() {
         bt = new Button();
-        bt.getStyleClass().add("fork");
-        bt.setPrefSize(200, 3);
+        bt.getStyleClass().add("io");
+        bt.setMinSize(150, 80);
         p.getChildren().add(bt);
         bt.setOnMousePressed(mouseHandler);
         bt.setOnMouseDragged(mouseHandler);
@@ -192,19 +192,18 @@ public class ActivityDiagramController {
 
     }
     @FXML
-    Label actLb;
+    Label flowLb;
     @FXML
     MenuBar menubar;
-    ColorPicker colorPicker = new ColorPicker();
     public void bgColor()
     {
-
+        ColorPicker colorPicker = new ColorPicker();
         p.getChildren().add(colorPicker);
         colorPicker.valueProperty().addListener((observable -> {
             p.setStyle(
                     "-fx-background-color: #" + colorPicker.getValue().toString().substring(2, 8) + ";"
             );
-            actLb.setStyle(
+            flowLb.setStyle(
                     "-fx-background-color: #" + colorPicker.getValue().toString().substring(2, 8) + ";"
             );
             menubar.setStyle(
@@ -216,23 +215,10 @@ public class ActivityDiagramController {
     {
         p.setStyle("-fx-background-color: #f4f4f4");
         menubar.setStyle("-fx-background-color: #3a88a9");
-        actLb.setStyle("-fx-background-color: #9bc6d9");
+        flowLb.setStyle("-fx-background-color: #9bc6d9");
 
     }
 
-    public void Save(ActionEvent e)
-    {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Save");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Files", "*.jpg"));
-        Stage stage = (Stage) p.getScene().getWindow();
-        File file = fileChooser.showSaveDialog(stage);
-    }
-public void Hideclr(MouseEvent e)
-{
-    System.out.println("click");
-    colorPicker.setVisible(false);
-}
     EventHandler<MouseEvent> mouseHandler = new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent e) {
@@ -383,6 +369,15 @@ public void Hideclr(MouseEvent e)
 
         }
     };
+
+    public void Save(ActionEvent e)
+    {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("All Files", "*.jpg"));
+        Stage stage = (Stage) p.getScene().getWindow();
+        File file = fileChooser.showSaveDialog(stage);
+    }
 
     EventHandler<MouseEvent> topConnect = new EventHandler<MouseEvent>() {
         @Override

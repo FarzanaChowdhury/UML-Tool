@@ -1,4 +1,4 @@
-package com.example.umltool;
+package com.example.uml_tool;
 
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -26,8 +26,8 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-/*import java.util.logging.Level;
-import java.util.logging.Logger;*/
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class ClassDiagramController {
@@ -397,7 +397,7 @@ public class ClassDiagramController {
         }
 
 
-/*        private void saveTextToFile(String content, File file) {
+        private void saveTextToFile(String content, File file) {
                 try {
                         PrintWriter writer;
                         writer = new PrintWriter(file);
@@ -406,7 +406,7 @@ public class ClassDiagramController {
                 } catch (IOException ex) {
                         Logger.getLogger(ClassDiagramController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-        }*/
+        }
         int bg = 0;
         @FXML
         MenuBar menubar;

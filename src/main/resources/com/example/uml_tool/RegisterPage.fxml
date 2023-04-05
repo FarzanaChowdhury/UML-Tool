@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="390.0" style="-fx-background-color: white;" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.uml_tool.RegisterPageController">
+    <stylesheets>
+        <URL value="@registerpage.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane layoutX="352.0" prefHeight="400.0" prefWidth="222.0" style="-fx-background-color: #263F73;">
+         <children>
+            <Label layoutX="42.0" layoutY="150.0" prefHeight="43.0" prefWidth="201.0" text="UML TOOL" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="26.0" />
+               </font>
+            </Label>
+            <Button layoutX="14.0" layoutY="194.0" mnemonicParsing="false" onAction="#loginRedirectOnAction" onMouseClicked="#loginRedirectOnAction" prefHeight="43.0" prefWidth="220.0" style="-fx-background-color: transparent;" text="Already Have an Account?" textFill="WHITE" underline="true">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
+            <Line endX="139.4000244140625" layoutX="69.0" layoutY="195.0" startX="-40.20001220703125" startY="-1.52587890625E-5" stroke="WHITE" strokeWidth="2.0" />
+         </children>
+      </AnchorPane>
+      <Label alignment="TOP_CENTER" layoutX="70.0" layoutY="45.0" prefHeight="38.0" prefWidth="210.0" text="Sign Up" textFill="#263f73">
+         <font>
+            <Font name="Arial" size="40.0" />
+         </font>
+      </Label>
+      <Label layoutX="46.0" layoutY="115.0" prefHeight="18.0" prefWidth="73.0" text="First Name" />
+      <Label layoutX="44.0" layoutY="221.0" text="Email Address" />
+      <Label layoutX="45.0" layoutY="275.0" text="Password" />
+      <TextField fx:id="firstNameTextField" layoutX="46.0" layoutY="133.0" prefHeight="18.0" prefWidth="260.0" />
+      <TextField fx:id="lastNameTextField" layoutX="46.0" layoutY="186.0" prefHeight="26.0" prefWidth="260.0" />
+      <TextField fx:id="emailAddressTextField" layoutX="46.0" layoutY="238.0" prefHeight="26.0" prefWidth="260.0" />
+      <PasswordField fx:id="passwordPasswordField" layoutX="46.0" layoutY="293.0" prefHeight="26.0" prefWidth="260.0" />
+      <Label layoutX="45.0" layoutY="168.0" prefHeight="18.0" prefWidth="73.0" text="Last Name" />
+      <Button layoutX="122.0" layoutY="341.0" mnemonicParsing="false" onAction="#signUpButtonOnAction" prefHeight="26.0" prefWidth="107.0" style="-fx-background-color: #263F73; -fx-text-fill: white;" text="Sign Up">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
