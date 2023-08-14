@@ -11,4 +11,5 @@ The project is currently in progress.
 
 ![screenshot](https://github.com/FarzanaChowdhury/UML-Tool/blob/master/Demo/UML_TOOL_ss.png)
 
-![Demo](https://github.com/FarzanaChowdhury/UML-Tool/blob/master/Demo/umldemo.mp4)
+![Demovideo](https://github.com/FarzanaChowdhury/UML-Tool/blob/master/Demo/umldemo.mp4)
+![Demogif](https://github.com/FarzanaChowdhury/UML-Tool/blob/master/Demo/umldemo.gif)
