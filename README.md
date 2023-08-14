@@ -6,3 +6,9 @@ This application works like any other uml tool, with some extra features like ge
 
 This was our group project for Java Course.
 The project is currently in progress.
+
+## Demo
+
+![screenshot](https://github.com/FarzanaChowdhury/UML-Tool/blob/master/Demo/UML_TOOL_ss.png)
+
+![Demo](https://github.com/FarzanaChowdhury/UML-Tool/blob/master/Demo/umldemo.mp4)
